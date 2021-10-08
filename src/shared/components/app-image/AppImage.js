@@ -35,7 +35,7 @@ class AppImage extends React.Component {
       imageLoaded: false,
       src: this.props.src,
       prefix: this.props.prefix || '',
-      d: this.props.d || ''
+      d: this.props.d || '',
     };
   }
 
@@ -161,14 +161,14 @@ class AppImage extends React.Component {
         className={classnames(this.props.className, this.props.imageClass, {
           'd-none': (!this.state.imageLoaded)
         })}
-        style={this.state.style}
+        style={{...this.props.style, ...this.state.style}}
         key={this.props.key}
         onLoad={this.onImageLoad}
         onError={this.onImageError}
       />}
 
       {!this.state.src && <div
-        style={this.state.style} 
+        style={{...this.props.style, ...this.state.style}} 
         className={classnames(this.props.defaultClass ?? 'purpink', this.props.className, this.props.imageClass, {
         'd-none': (!this.state.imageLoaded && !this.props.showDefault)
       })}></div>}
